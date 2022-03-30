@@ -87,9 +87,9 @@ class BugListController extends Controller
      */
     public function modifyBugList(ModifyBugListRequest $request)
     {
-        $bug_list_id = $this->bugListService->modifyBugList(['id' => $request->id, 'summary' => $request->summary, 'description' => $request->description]);
+        $modify_bug_result = $this->bugListService->modifyBugList(['id' => $request->id, 'summary' => $request->summary, 'description' => $request->description]);
 
-        return response()->json(['result' => $bug_list_id]);
+        return response()->json(['result' => $modify_bug_result]);
     }
 
 
@@ -113,16 +113,16 @@ class BugListController extends Controller
      *          description="刪除成功",
      *          @OA\JsonContent(
      *              type = "object",
-     *              @OA\Property(property="bug_list_id", description="修改的BUG單ID", type="integer", default="1")
+     *              @OA\Property(property="result", description="修改的BUG單ID", type="integer", default="1")
      *          )
      *      )
      * )
      */
     public function deleteBugList(DeleteBugListRequest $request)
     {
-        $bug_list_id = $this->bugListService->deleteBugList($request->id);
+        $delete_bug_result = $this->bugListService->deleteBugList($request->id);
 
-        return response()->json(['bug_list_id' => $bug_list_id]);
+        return response()->json(['result' => $delete_bug_result]);
     }
 
 
@@ -153,9 +153,9 @@ class BugListController extends Controller
      */
     public function solveBugList(SolveBugListRequest $request)
     {
-        $bug_list_id = $this->bugListService->solveBugList($request->id);
+        $solve_bug_result = $this->bugListService->solveBugList(['id' => $request->id, 'summary' => $request->summary, 'description' => $request->description]);
 
-        return response()->json(['result' => $bug_list_id]);
+        return response()->json(['result' => $solve_bug_result]);
     }
 
     /**

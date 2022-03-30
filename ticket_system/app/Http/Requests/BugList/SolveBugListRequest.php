@@ -24,7 +24,9 @@ class SolveBugListRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|integer|min:1'
+            'id' => 'required|integer|min:1',
+            'summary' => 'required|string|max:50',
+            'description' => 'required|string|max:50'
         ];
     }
 }

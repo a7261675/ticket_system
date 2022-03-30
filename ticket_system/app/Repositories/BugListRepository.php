@@ -17,6 +17,17 @@ class BugListRepository
         $this->bugList = $bugList;
     }
 
+    public function getById($id): array
+    {
+        $result = $this->bugList->where('id', '=', $id)->first();
+
+        if($result == null) {
+            return array();
+        } else {
+            return $result->toArray();
+        }
+    }
+
     public function addBugList($conditions = []): int
     {
         return $this->bugList->insertGetId($conditions);

@@ -144,7 +144,7 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "bug_list_id": {
+                                        "result": {
                                             "description": "修改的BUG單ID",
                                             "type": "integer",
                                             "default": "1"

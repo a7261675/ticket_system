@@ -23,6 +23,16 @@ class BugListService
 
 	public function modifyBugList($conditions = [])
 	{
+		$bug_data = $this->bugListRepository->getById($conditions['id']);
+
+		if(empty($bug_data)) {
+			return "BUG has been deleted.";
+		}
+
+		if($bug_data['is_solved'] == 1) {
+			return "BUG has been solved.";
+		}
+
 		return $this->bugListRepository->modifyBugList($conditions);
 	}
 
@@ -31,8 +41,22 @@ class BugListService
 		return $this->bugListRepository->deleteBugList($bug_list_id);
 	}
 
-	public function solveBugList($bug_list_id)
+	public function solveBugList($conditions = [])
 	{
+		$bug_data = $this->bugListRepository->getById($conditions['id']);
+
+		if(empty($bug_data)) {
+			return "BUG has been deleted.";
+		}
+
+		if($bug_data['summary'] != $conditions['summary']) {
+			return "BUG summary has been changed.";
+		}
+
+		if($bug_data['description'] != $conditions['description']) {
+			return "BUG description has been changed.";
+		}
+
 		return $this->bugListRepository->solveBugList($bug_list_id);
 	}
 
