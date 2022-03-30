@@ -1,0 +1,269 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BugList API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/bug_list/add": {
+            "post": {
+                "operationId": "f4567f68582d4bf6814f2562c0a189aa",
+                "requestBody": {
+                    "description": "新增BUG單。",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "summary",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "summary": {
+                                        "description": "BUG總括",
+                                        "type": "string",
+                                        "example": "按鈕未出現"
+                                    },
+                                    "description": {
+                                        "description": "BUG描述",
+                                        "type": "string",
+                                        "example": "連點五下時，按鈕未出現"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "新增成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "bug_list_id": {
+                                            "description": "新增的BUG單ID",
+                                            "type": "integer",
+                                            "default": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bug_list/modify": {
+            "post": {
+                "operationId": "26b826e1e0556540e6f853f9f0e716de",
+                "requestBody": {
+                    "description": "修改BUG單。",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "id",
+                                    "summary",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "description": "BUG單ID",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "summary": {
+                                        "description": "BUG總括",
+                                        "type": "string",
+                                        "example": "按鈕未出現"
+                                    },
+                                    "description": {
+                                        "description": "BUG描述",
+                                        "type": "string",
+                                        "example": "連點五下時，按鈕未出現"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "修改成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "description": "修改的BUG單ID",
+                                            "type": "integer",
+                                            "default": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bug_list/delete": {
+            "delete": {
+                "operationId": "25c8192e97909895eea17a6156b2deac",
+                "requestBody": {
+                    "description": "刪除BUG單。",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "description": "BUG單ID",
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "刪除成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "bug_list_id": {
+                                            "description": "修改的BUG單ID",
+                                            "type": "integer",
+                                            "default": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bug_list/solve": {
+            "post": {
+                "operationId": "05ab3340ce496c996afdeeccb4f4cbe7",
+                "requestBody": {
+                    "description": "解BUG單。",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "description": "BUG單ID",
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "解BUG成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "description": "修改的BUG單ID",
+                                            "type": "integer",
+                                            "default": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bug_list/get": {
+            "get": {
+                "operationId": "7a5bd873e2f2bc0c34fb94fb0d3efb64",
+                "responses": {
+                    "200": {
+                        "description": "取得BUG單列表",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "響應數據",
+                                            "properties": {
+                                                "record": {
+                                                    "description": "BUG單列表",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "description": "BUG單ID",
+                                                                "type": "integer",
+                                                                "example": "1"
+                                                            },
+                                                            "summary": {
+                                                                "description": "BUG總括",
+                                                                "type": "string",
+                                                                "example": "畫面閃退"
+                                                            },
+                                                            "description": {
+                                                                "description": "BUG描述",
+                                                                "type": "string",
+                                                                "example": "長按畫面後連續關閉視窗，畫面會閃退"
+                                                            },
+                                                            "is_solved": {
+                                                                "description": "BUG是否被解掉",
+                                                                "type": "integer",
+                                                                "example": "0"
+                                                            },
+                                                            "update_at": {
+                                                                "description": "BUG更新時間",
+                                                                "type": "string",
+                                                                "example": "2022-03-30T18:59:20.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
